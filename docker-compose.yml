@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "5001:5001"  # HostPort:ContainerPort
+    environment:
+      - DB_HOST=mongo
+      - DB_PORT=27017
+      - DB_NAME=ecommerce
+      - DB_USER=root
+      - DB_PASS=example
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules  # Keep container modules separate
+    depends_on:
+      - mongo
+    command: npm run dev  # Override Dockerfile CMD
+
+  mongo:
+    image: mongo:8.0
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=example
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
