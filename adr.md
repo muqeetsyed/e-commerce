@@ -41,6 +41,29 @@ however, in dev mode we want auto restart system, for that we have to run nodemo
 Also, keep db credentials in the .env file
 
 
+To run mongo inside from the container
+
+1. docker exec -it mongo bash
+2. run mongoose: mongosh -u root -p example --authenticationDatabase admin
+3. show collections //Cmd: for listing collections
+4. db.products.find() // list documents of a particular collection
+
+
+Also, new routes are added for CRUD operation on product document
+
+Besides, custom functions can also added in the model as shown below 
+```}, {
+    statics: {
+        findByName(name) {
+            return this.find({ name: name });
+        }
+    }
+```
+
+
+
+
+
 
 
 
