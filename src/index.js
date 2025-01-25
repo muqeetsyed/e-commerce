@@ -7,7 +7,7 @@ import productRoutes from './routes/app.js';  // Import the router
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 5004;
 
 // Middleware
 app.use(express.json());

@@ -5,15 +5,8 @@ services:
     build: .
     ports:
       - "5001:5001"  # HostPort:ContainerPort
-    environment:
-      - DB_HOST=mongo
-      - DB_PORT=27017
-      - DB_NAME=ecommerce
-      - DB_USER=root
-      - DB_PASS=example
     volumes:
       - .:/usr/src/app
-      - /usr/src/app/node_modules  # Keep container modules separate
     depends_on:
       - mongo
     command: npm run dev  # Override Dockerfile CMD
