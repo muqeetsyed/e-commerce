@@ -69,6 +69,12 @@ Support registering users
 Use jsonwebtoken for authentication and information exchange
 
 
+Use Argon2 hashing algorithm for storing password.
+
+Also, use pre save hooks to save hashed password.
+
+Note: to remove all records in mongodb `db.users.remove({})`
+
 
 
 
