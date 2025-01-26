@@ -61,6 +61,13 @@ Besides, custom functions can also added in the model as shown below
 ```
 
 
+## DAY 3
+
+## DATE 26 JAN 2025
+
+Support registering users
+Use jsonwebtoken for authentication and information exchange
+
 
 
 
