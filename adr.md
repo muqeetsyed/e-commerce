@@ -76,7 +76,11 @@ Also, use pre save hooks to save hashed password.
 Note: to remove all records in mongodb `db.users.remove({})`
 
 
+. Added Cart Module, with 1-1 association User and 1-n association with Product
 
-
+. Added middleware to fetchLoggedIn user details via jwt
+. for that first, get the token when user log in then pass as a bearer token via postman 
+  ![img.png](img.png)
+. from req object logged-in user details are retrieved
 
 

@@ -12,3 +12,7 @@ export const generateToken = (payload) => {
 
     return jwt.sign(payload, secretKey, options);
 }
+
+export const verifyToken = (token) => {
+    return jwt.verify(token, process.env.JWT_SECRET);
+}

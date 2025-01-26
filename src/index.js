@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import productRoutes from './routes/productRoute.js';  // Import the router
 import userRoutes from './routes/userRoute.js';  // Import the router
+import cartRoutes from './routes/cartRoute.js';  // Import the router
 
 // Load environment variables first
 dotenv.config();
@@ -15,6 +16,7 @@ app.use(express.json());
 
 app.use("/api/products", productRoutes)
 app.use("/api/users", userRoutes)
+app.use("/api/carts", cartRoutes)
 
 // Database Connection with retries
 const connectDB = async () => {
