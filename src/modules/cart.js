@@ -28,10 +28,6 @@ const cartSchema = new Schema({
         type: Number,
         default: 1
     },
-    price: {
-        type: Number,
-        default: 0
-    },
     user: {
         type: mongoose.Types.ObjectId,
         ref: "User",
