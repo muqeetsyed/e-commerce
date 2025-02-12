@@ -83,4 +83,14 @@ Note: to remove all records in mongodb `db.users.remove({})`
   ![img.png](img.png)
 . from req object logged-in user details are retrieved
 
+## DAY 4-5
 
+## DATE 9 FEB 2025
+
+Install React for front-end
+commands:
+> yarn install vite@latest
+
+Also, install bun over yarn and npm
+with this we can locally run dev like
+> bun dev 

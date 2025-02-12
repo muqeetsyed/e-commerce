@@ -5,7 +5,7 @@
 
   /*color-scheme: light dark;*/
   color: rgba(255, 255, 255, 0.87);
-  /*background-color: #242424;*/
+  background-color: #ffeda3;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -13,11 +13,18 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.product-items {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+}
 
 .card {
-  width: 15%;
+  margin: 2%;
+  width: 90%;
   border-radius: 10px;
   transition: transform 0.3s ease;
+  background-color: #ffffff;
+  padding: 2%;
 }
 
 .card:hover {
