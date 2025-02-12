@@ -1,9 +1,9 @@
 import {ProductItem} from "./ProductItem.tsx";
-import productItems from "../api/product.json";
+import productItems from "../../api/product.json";
 
 export const ProductItems = () => {
     return (
-        <>
+        <div className="product-items">
             {productItems.map((product) => {
                 return <ProductItem
                     key={product.id}
@@ -14,6 +14,6 @@ export const ProductItems = () => {
                     productPrice={product.productPrice}
                 />
             })}
-        </>
+        </div>
     );
 }
