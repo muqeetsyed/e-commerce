@@ -1,5 +1,5 @@
 import {ProductItem} from "./ProductItem.tsx";
-import productItems from "../../api/product.json";
+import productItems from "../../../api/product.json";
 
 export const ProductItems = () => {
     return (
