@@ -1,6 +1,7 @@
 import {ProductItems} from "./components/layout/product/ProductItems.tsx";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import {AppLayout} from "./components/layout/AppLayout.tsx";
+import {CreateUser} from "./components/layout/user/CreateUser.tsx";
 
 export const App = () => {
     const router = createBrowserRouter([
@@ -39,6 +40,10 @@ export const App = () => {
                 {
                     path: '/user-info',
                     element: <h1>user info</h1>
+                },
+                {
+                    path: '/create-new-user',
+                    element: <CreateUser/>
                 }
             ]
         },

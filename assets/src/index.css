@@ -4,7 +4,7 @@
   font-weight: 400;
 
   /*color-scheme: light dark;*/
-  color: rgba(255, 255, 255, 0.87);
+  color: rgba(0, 0, 0, 0.87);
   background-color: #ffeda3;
 
   font-synthesis: none;
@@ -95,7 +95,7 @@ header {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  width: 90%;
+  width: 85%;
 }
 
 .shop-now {
@@ -107,7 +107,13 @@ header {
   border-radius: 15px;
 }
 
-.user-profile-button {
+.user-nav-section {
+  width: 15%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.user-nav-section > button {
   margin-left: 10px;
   padding: 5px 10px;
   border: 1px solid black;
@@ -167,3 +173,59 @@ header {
   text-decoration: none;
   color: black;
 }
+
+
+/*-----------------------------------------------------------USER FORM----------------------------------------------------*/
+
+.form-container {
+  margin-top: 10px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+}
+
+input {
+  width: 30%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-right: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.registration-button {
+  width: 20%;
+  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.registration-button:hover {
+  background-color: #218838;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+}
+
+textarea {
+  max-height: 10%;
+  max-width: 100%;
+}
+
+

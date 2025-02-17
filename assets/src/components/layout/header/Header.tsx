@@ -8,9 +8,12 @@ export const Header = () => {
                     <span>Free shipping on all intl. orders over $35</span>
                     <button className="shop-now">Shop Now</button>
                 </div>
-                <span>
-                    <button className="user-profile-button">
+                <span className="user-nav-section">
+                    <button>
                         <NavLink to="/user-info" style={{textDecoration: 'none'}}>User Profile</NavLink>
+                    </button>
+                    <button>
+                        <NavLink to="/create-new-user" style={{textDecoration: 'none'}}>Add User</NavLink>
                     </button>
                 </span>
             </div>
