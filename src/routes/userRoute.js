@@ -2,6 +2,8 @@ import express from 'express';
 import User from '../modules/user.js';
 import { generateToken } from "../utils/jwt.js";
 import * as argon2 from "argon2";
+import cors from "cors";
+import {corsOptions} from "../index.js";
 
 const router = express.Router();
 
@@ -17,9 +19,22 @@ router.get("/", async (req, res) => {
 
 
 // Create new user
-router.post("/create", async (req, res) => {
+router.post("/create", cors(corsOptions), async (req, res) => {
     try {
-        const {name, email, password } = req.body;
+        const {
+            firstName,
+            lastName,
+            mobile,
+            email,
+            password,
+            address,
+            address2,
+            city,
+            region,
+            zipCode,
+            country,
+            miscInfo
+        } = req.body;
 
         const existingUser = await User.findOne({ email });
 
@@ -28,9 +43,18 @@ router.post("/create", async (req, res) => {
         }
 
         const newUser = new User({
-            name: name,
+            firstName: firstName,
+            lastName: lastName,
+            mobile: mobile,
             email: email,
-            password: password
+            password: password,
+            address: address,
+            address2: address2,
+            city: city,
+            region: region,
+            zipCode: zipCode,
+            country: country,
+            miscInfo: miscInfo
         });
 
         await newUser.save();

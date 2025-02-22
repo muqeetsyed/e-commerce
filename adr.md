@@ -45,6 +45,7 @@ To run mongo inside from the container
 
 1. docker exec -it mongo bash
 2. run mongoose: mongosh -u root -p example --authenticationDatabase admin
+3. show databases; use ecommerce;
 3. show collections //Cmd: for listing collections
 4. db.products.find() // list documents of a particular collection
 
@@ -93,4 +94,10 @@ commands:
 
 Also, install bun over yarn and npm
 with this we can locally run dev like
-> bun dev 
+> bun dev
+
+## DAY 6-7-8-9-10
+
+## DATE 22 FEB 2025
+
+Installed CORS for registering domain of front-end

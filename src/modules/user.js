@@ -4,19 +4,50 @@ import * as argon2 from "argon2";
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
-    name:{
+    firstName: {
         type: String,
         required: true,
+    },
+    lastName: {
+        type: String,
+    },
+    mobile: {
+        type: String,
+        required: true,
+    },
+    email: {
+        type: String,
+        required: true,
+        unique: true,
     },
     password: {
         type: String,
         required: true,
     },
-    email:{
+    address: {
         type: String,
         required: true,
-        unique: true,
+    },
+    address2: {
+        type: String,
+    },
+    city: {
+        type: String,
+    },
+    region: {
+        type: String,
+    },
+    zipCode: {
+        type: String,
+        required: true,
+    },
+    country: {
+        type: String,
+    },
+    miscInfo: {
+        type: String,
     }
+
 });
 
 userSchema.pre("save", async function(next) {
