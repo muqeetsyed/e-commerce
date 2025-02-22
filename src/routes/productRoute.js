@@ -1,10 +1,12 @@
 import express from 'express';
 import Product from '../modules/product.js';
+import cors from "cors";
+import {corsOptions} from "../index.js";
 
 const router = express.Router();
 
 // Get All Products
-router.get("/", async (req, res) => {
+router.get("/", cors(corsOptions), async (req, res) => {
     try {
         const products = await Product.find();
         res.json(products)

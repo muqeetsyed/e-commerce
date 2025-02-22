@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+import cors from 'cors';
 import productRoutes from './routes/productRoute.js';  // Import the router
 import userRoutes from './routes/userRoute.js';  // Import the router
 import cartRoutes from './routes/cartRoute.js';  // Import the router
@@ -13,6 +14,12 @@ const PORT = process.env.PORT || 5004;
 
 // Middleware
 app.use(express.json());
+app.use(cors());
+
+export var corsOptions = {
+    origin: 'http://localhost:5173',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
 
 app.use("/api/products", productRoutes)
 app.use("/api/users", userRoutes)

@@ -6,21 +6,23 @@ export const CreateUser = () => {
         'lastName': '',
         'email': '',
         'mobile': '',
-        'streetAddress': '',
-        'streetAddressLine2': '',
+        'password': '',
+        'address': '',
+        'address2': '',
         'city': '',
         'region': '',
         'zipCode': '',
         'country': '',
-        'query': '',
+        'miscInfo': '',
     });
 
     const [errors, setErrors] = useState<formType>({
         'firstName': '',
         'email': '',
         'mobile': '',
-        'streetAddress': '',
+        'address': '',
         'zipCode': '',
+        'password': '',
     }); // Holds validation errors
 
 
@@ -62,12 +64,36 @@ export const CreateUser = () => {
     }
 
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
         Object.keys(user).forEach((field) => {
             validateField(field, user[field]);
+
         });
+
+        try {
+            const respsonse = await fetch("http://localhost:5001/api/users/create", {
+                method: 'POST',
+                headers: {
+                    'content-Type': 'application/json'
+                },
+                body: JSON.stringify(user)
+            });
+
+            if (respsonse.status === 400) {
+                const textData = await respsonse.text();
+                const errorMessage = JSON.parse(textData) as errorType;
+
+                alert(errorMessage.error);
+                return;
+            }
+
+            alert("Data saved successfully...")
+        } catch (error) {
+            console.error("fetch: ", error)
+        }
+
     }
 
 
@@ -88,6 +114,12 @@ export const CreateUser = () => {
             </div>
             <span className="error">{errors.email}</span>
 
+            <div className="form-group">
+                <label>Password: </label>
+                <input type="text" name="password" placeholder="password" onChange={handleInputChange}/>
+            </div>
+            <span className="error">{errors.password}</span>
+
 
             <div className="form-group">
                 <label>Mobile: </label>
@@ -97,8 +129,8 @@ export const CreateUser = () => {
 
             <div className="form-group">
                 <label>Address: </label>
-                <input type="text" name="streetAddress" placeholder="street address" onChange={handleInputChange}/>
-                <input type="text" name="streetAddressLine2" placeholder="street address line 2"
+                <input type="text" name="address" placeholder="street address" onChange={handleInputChange}/>
+                <input type="text" name="address2" placeholder="street address line 2"
                        onChange={handleInputChange}/>
                 <br/>
                 <input type="text" name="city" placeholder="city" onChange={handleInputChange}/>
@@ -114,7 +146,7 @@ export const CreateUser = () => {
             <div className="form-group">
                 <label>Any other info you want to know about? </label>
                 <br/>
-                <textarea id="query" name="query" rows="4" cols="50" onChange={handleInputChange}/>
+                <textarea id="query" name="miscInfo" rows="4" cols="50" onChange={handleInputChange}/>
 
             </div>
 
@@ -132,11 +164,15 @@ type formType = {
     lastName?: string,
     email: string,
     mobile: string,
-    streetAddress: string,
-    streetAddressLine2?: string,
+    address: string,
+    address2?: string,
     city?: string,
     region?: string,
     country?: string,
     zipCode: string,
     query?: string,
+};
+
+type errorType = {
+    error: string,
 };
