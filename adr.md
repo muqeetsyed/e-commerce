@@ -101,3 +101,27 @@ with this we can locally run dev like
 ## DATE 22 FEB 2025
 
 Installed CORS for registering domain of front-end
+
+### DAY 11
+
+## DATE 23 FEB 2025
+
+> Dir Str
+> /src
+> /config # Configuration files (e.g., DB, environment variables)
+> /controllers # Request handlers
+> /services # Business logic (Service Layer)
+> /repositories # Database interactions
+> /models # ORM models (Mongoose/Sequelize)
+> /routes # Express routes
+> /middlewares # Middleware functions
+> /utils # Helper functions
+> server.js # Entry point
+
+
+Fetch the specific columns from a document in mongodb
+> db.users.find({}, {address: 1, zipcode: 1})
+
+
+Fetch the specific columns from a document using mongoose
+> db.users.find(), select({address: 1, zipcode: 1})

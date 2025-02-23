@@ -4,13 +4,18 @@ import { generateToken } from "../utils/jwt.js";
 import * as argon2 from "argon2";
 import cors from "cors";
 import {corsOptions} from "../index.js";
+import UserRepository from "../repositories/UserRepository.js";
+import * as util from "node:util";
+import UserService from "../services/UserService.js";
 
 const router = express.Router();
 
 // Get All Users
 router.get("/", async (req, res) => {
     try {
-        const users = await User.find();
+        const userService = new UserService(new UserRepository());
+        const users = await userService.getUsers();
+
         res.json(users)
     } catch (err) {
         res.status(500).send("Server error")
