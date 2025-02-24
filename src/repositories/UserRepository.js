@@ -10,7 +10,7 @@ export default class UserRepository {
                 address: 1,
                 region: 1,
                 zipCode: 1,
-                _id: 0
+                _id: 1
             });
     }
 }
