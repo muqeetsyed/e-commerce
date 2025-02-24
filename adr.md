@@ -101,3 +101,48 @@ with this we can locally run dev like
 ## DATE 22 FEB 2025
 
 Installed CORS for registering domain of front-end
+
+### DAY 11
+
+## DATE 23 FEB 2025
+
+> Dir Str
+> /src
+> /config # Configuration files (e.g., DB, environment variables)
+> /controllers # Request handlers
+> /services # Business logic (Service Layer)
+> /repositories # Database interactions
+> /models # ORM models (Mongoose/Sequelize)
+> /routes # Express routes
+> /middlewares # Middleware functions
+> /utils # Helper functions
+> server.js # Entry point
+
+
+Fetch the specific columns from a document in mongodb
+> db.users.find({}, {address: 1, zipcode: 1})
+
+
+Fetch the specific columns from a document using mongoose
+> db.users.find(), select({address: 1, zipcode: 1})
+
+
+UserEffect Hook:
+Used for handling side effects in functional components.
+
+1. Initial Rendering: When the components mounts, useEffects can run its function to perform its operation like data
+   fetching
+2. Dependencies: Determines when the useEffect should re-run, if any of its value changes, the effect will re-run.
+3. Cleanup: This hook returns the clean up function to clean the after effect e.g unsubscribing the events or clearing
+   the timers.
+
+Side Effect: An operation that affects something that is outside of the function
+
+Controlled Component: Those components whose data are handled by React component state.
+E.g:- StateManagement, EventHandlers, StateUpdates etx
+
+UnControlled Component: Those components whose data is handled by the dom.
+E.g:- Direct Dom Manipulation, Event handling, Accessing Form Data
+
+UserEffect Hook:
+E.g: Fetching data from external source, updating the component after changing the data 

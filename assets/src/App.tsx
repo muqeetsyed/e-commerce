@@ -2,6 +2,7 @@ import {ProductItems} from "./components/layout/product/ProductItems.tsx";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import {AppLayout} from "./components/layout/AppLayout.tsx";
 import {CreateUser} from "./components/layout/user/CreateUser.tsx";
+import {ListUsers} from "./components/layout/user/ListUsers.tsx";
 
 export const App = () => {
     const router = createBrowserRouter([
@@ -44,6 +45,10 @@ export const App = () => {
                 {
                     path: '/create-new-user',
                     element: <CreateUser/>
+                },
+                {
+                    path: '/list-users',
+                    element: <ListUsers/>
                 }
             ]
         },

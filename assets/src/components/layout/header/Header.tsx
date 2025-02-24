@@ -15,6 +15,9 @@ export const Header = () => {
                     <button>
                         <NavLink to="/create-new-user" style={{textDecoration: 'none'}}>Add User</NavLink>
                     </button>
+                    <button>
+                        <NavLink to="/list-users" style={{textDecoration: 'none'}}>List Users</NavLink>
+                    </button>
                 </span>
             </div>
             <div className="nav-bar">
