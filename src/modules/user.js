@@ -6,27 +6,52 @@ const { Schema } = mongoose;
 const userSchema = new Schema({
     firstName: {
         type: String,
-        required: true,
+        
+        required: function () {
+            // Only required for non-Google users initially
+            return !this.googleId;
+        },
     },
     lastName: {
         type: String,
     },
+    /* mobile: {
+         type: String,
+         required: true,
+     },*/
     mobile: {
         type: String,
-        required: true,
+        required: function () {
+            // Only required for non-Google users
+            return !this.googleId;
+        },
     },
     email: {
         type: String,
         required: true,
         unique: true,
     },
+    /* password: {
+         type: String,
+         required: true,
+     },*/
     password: {
         type: String,
-        required: true,
+        // Only required for users NOT using Google auth
+        required: function () {
+            return !this.googleId;
+        },
     },
-    address: {
+    /*address: {
         type: String,
         required: true,
+    },*/
+    address: {
+        type: String,
+        required: function () {
+            // Only required for non-Google users initially
+            return !this.googleId;
+        },
     },
     address2: {
         type: String,
@@ -37,19 +62,44 @@ const userSchema = new Schema({
     region: {
         type: String,
     },
+    /* zipCode: {
+         type: String,
+         required: true,
+     },*/
     zipCode: {
         type: String,
-        required: true,
+        required: function () {
+            // Only required for non-Google users initially
+            return this.googleId ? false : true;
+        },
     },
+
     country: {
         type: String,
     },
     miscInfo: {
         type: String,
+    },
+
+    // New fields for Google authentication
+    googleId: {
+        type: String,
+    },
+    profilePicture: {
+        type: String,
+    },
+    isVerified: {
+        type: Boolean,
+        default: false, // Regular users start unverified
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now,
     }
 
 });
 
+// hashing middleware
 userSchema.pre("save", async function(next) {
     if (!this.isModified("password")) return next()
 
@@ -59,7 +109,13 @@ userSchema.pre("save", async function(next) {
     } catch (error) {
         return next(error)
     }
-})
+});
+
+// Add a helper method to check password
+userSchema.methods.verifyPassword = async function (candidatePassword) {
+    if (!this.password) return false;
+    return await argon2.verify(this.password, candidatePassword);
+};
 
 
 const User = mongoose.model("User", userSchema);

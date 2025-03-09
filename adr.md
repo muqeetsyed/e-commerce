@@ -146,3 +146,73 @@ E.g:- Direct Dom Manipulation, Event handling, Accessing Form Data
 
 UserEffect Hook:
 E.g: Fetching data from external source, updating the component after changing the data 
+
+## DAY 12
+
+## DATE 9 MARCH 2025
+
+Install passport passport-google-oauth20 express-session connect-mongo
+
+> Passport: This is like a security guard for your website.
+> It checks if people are allowed to enter special areas of your site.
+> It's the main tool that handles signing in.
+
+> Passport-Google-OAuth20: This is a special add-on for Passport that knows how to talk to Google.
+> It's like having a special door in your website that lets people use their Google account to enter instead of creating
+> a
+> new username and password.
+
+> Express-Session: This is like a memory bracelet for your website.
+> When someone logs in, the website gives them this invisible bracelet so it remembers who they are as they move around
+> different pages.
+> Without this, the website would forget who you are every time you click on something!
+
+> Connect-Mongo: This is like a storage box for all those memory bracelets.
+> Instead of keeping them in a pile that might get lost if the computer restarts, this package puts them in a safe
+> MongoDB
+> drawer
+> so they stay organized and don't get lost, even if the website needs to restart.
+
+> Together, these packages help your website let people sign in with Google, remember who they are as they browse
+> around,
+> and keep that information safe even if something goes wrong with the server.
+
+
+app.use(express.urlencoded({ extended: true }));
+It is used just to encode the complex object into a simple object.
+
+E.g:
+submitted form data is like name=John&hobbies[indoor]=chess&hobbies[outdoor]=cycling
+After encoding it will be like
+{
+name: 'John',
+hobbies: {'indoor' : chess, 'outdoor' : cycling}
+}
+
+But with { extended: false }, you'd only get:
+
+{
+name: "John",
+"hobbies[indoor]": "chess",
+"hobbies[outdoor]": "cycling"
+}
+
+To delete/truncate the documents in a collection of mongo db run:
+> db.users.deleteMany({})
+> or
+> db.users.drop()
+
+## GUIDE HOW TO Create a Google OAuth Project
+
+Before writing any code, you need to set up a project in the Google Developer Console:
+
+1. Go to the Google Cloud Console (https://console.cloud.google.com/)
+2. Create a new project or select an existing one
+3. Navigate to "APIs & Services" > "Credentials"
+4. Click "Create Credentials" and select "OAuth client ID"
+5. Configure the consent screen if prompted
+6. For "Application type", select "Web application"
+7. Add a name for your OAuth client
+8. Add authorized redirect URIs: http://localhost:5000/api/auth/google/callback (for development)
+9. Click "Create"
+10. Note your Client ID and Client Secret - you'll need these
