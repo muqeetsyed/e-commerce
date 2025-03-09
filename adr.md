@@ -201,3 +201,18 @@ To delete/truncate the documents in a collection of mongo db run:
 > db.users.deleteMany({})
 > or
 > db.users.drop()
+
+## GUIDE HOW TO Create a Google OAuth Project
+
+Before writing any code, you need to set up a project in the Google Developer Console:
+
+1. Go to the Google Cloud Console (https://console.cloud.google.com/)
+2. Create a new project or select an existing one
+3. Navigate to "APIs & Services" > "Credentials"
+4. Click "Create Credentials" and select "OAuth client ID"
+5. Configure the consent screen if prompted
+6. For "Application type", select "Web application"
+7. Add a name for your OAuth client
+8. Add authorized redirect URIs: http://localhost:5000/api/auth/google/callback (for development)
+9. Click "Create"
+10. Note your Client ID and Client Secret - you'll need these
